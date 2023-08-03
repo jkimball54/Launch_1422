@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CaddyShackMVC.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using CaddyShackMVC.Models;
 
 namespace CaddyShackMVC.Controllers
 {
@@ -18,6 +19,10 @@ namespace CaddyShackMVC.Controllers
             var golfBags = _context.GolfBags.ToList();
             return View(golfBags);
         }
+        public IActionResult New()
+        {
+            return View();
+        }
 
         [Route("/golfbags/{id:int}")]
         public IActionResult Show(int id)
@@ -34,6 +39,17 @@ namespace CaddyShackMVC.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("index");
+        }
+
+        [HttpPost]
+        public IActionResult Index(GolfBag golfbag)
+        {
+            _context.GolfBags.Add(golfbag);
+            _context.SaveChanges();
+
+            var newGolfbagId = golfbag.Id;
+
+            return RedirectToAction("show", new { id = golfbag.Id});
         }
     }
 }
