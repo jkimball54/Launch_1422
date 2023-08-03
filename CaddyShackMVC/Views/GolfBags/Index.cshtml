@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CaddyShackMVC.Models.GolfBag>
+
+<h1>Golf Bags</h1>
+
+@foreach(var golfbag in Model)
+{
+   <p>
+    <form method="post" action="/golfbags/delete/@golfbag.Id">
+        <button type="submit" onclick="return confirm('Are you sure you want to delete @golfbag.Player?')">Delete</button>
+    </form>
+    <a href="/golfbags/@golfbag.Id">Info</a> ID:@golfbag.Id, Player:@golfbag.Player, Capacity:@golfbag.Capacity
+   </p>
+}
+<br></br>
+
+<a href="/golfbags/new">Create New GolfBag</a>
