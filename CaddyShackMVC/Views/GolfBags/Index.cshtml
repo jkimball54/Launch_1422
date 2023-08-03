@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CaddyShackMVC.Models.GolfBag>
+
+<h1>Golf Bags</h1>
+
+@foreach(var golfbag in Model)
+{
+    <p>ID:@golfbag.Id, Player:@golfbag.Player, Capacity:@golfbag.Capacity</p>
+}
