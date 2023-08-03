@@ -25,5 +25,15 @@ namespace CaddyShackMVC.Controllers
             var golfBag = _context.GolfBags.Include(g => g.Clubs).Where(g => g.Id == id).FirstOrDefault();
             return View(golfBag);
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var golfbag = _context.GolfBags.Find(id);
+            _context.GolfBags.Remove(golfbag);
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
     }
 }
