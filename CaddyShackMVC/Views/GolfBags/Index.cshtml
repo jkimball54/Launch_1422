@@ -4,5 +4,5 @@
 
 @foreach(var golfbag in Model)
 {
-    <p>ID:@golfbag.Id, Player:@golfbag.Player, Capacity:@golfbag.Capacity</p>
+    <p><a href="/golfbags/@golfbag.Id">Info</a> ID:@golfbag.Id, Player:@golfbag.Player, Capacity:@golfbag.Capacity</p>
 }
